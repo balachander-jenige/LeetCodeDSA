@@ -1,13 +1,9 @@
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        nodes = []
-        curr = head
+        slow, fast = head, head
         
-        # store references to nodes, not just values
-        while curr:
-            nodes.append(curr)
-            print(curr)
-            curr = curr.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
         
-        n = len(nodes) // 2
-        return nodes[n]
+        return slow
